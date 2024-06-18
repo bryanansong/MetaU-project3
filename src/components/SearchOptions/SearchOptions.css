@@ -1,0 +1,14 @@
+.filterOptions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.filterOptions input,
+.filterOptions select {
+  padding: 10px;
+  width: 35vw;
+  border-radius: 8px;
+  border: 2px solid rgba(152, 151, 151, 0.461);
+}
