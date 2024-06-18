@@ -1,0 +1,35 @@
+.card {
+  border-radius: 8px;
+  width: 260px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.3s linear;
+}
+
+.card:hover {
+  transition: all 0.3s ease;
+  background-color: #3667c9;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  transform: translate3D(0, -1px, 0) scale(1.04);
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.movieCover {
+  width: 100%;
+}
+
+.movieText {
+  padding: 0px 10px;
+  margin: 3px 0px;
+}
+
+.movieTitle {
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin: 3px 0px;
+}
