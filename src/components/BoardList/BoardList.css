@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+}
+
+.board-list {
+  display: flex;
+  width: 95%;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
