@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./HomePage.css";
 import SearchOptions from "../../components/SearchOptions/SearchOptions";
 import BoardList from "../../components/BoardList/BoardList";
