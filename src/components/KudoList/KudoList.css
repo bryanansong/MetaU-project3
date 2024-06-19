@@ -1,11 +1,8 @@
-.container {
-  width: 100%;
-}
-
-.board-list {
+.kudo-list {
   display: flex;
-  width: 95%;
-  gap: 20px;
-  flex-wrap: wrap;
   justify-content: center;
+  width: 95%;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px 0px;
 }

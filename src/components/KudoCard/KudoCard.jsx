@@ -12,7 +12,7 @@ const KudoCard = ({ kudo }) => {
         className="kudo-img"
         alt="Movie Cover Art"
       />
-      <h2 className="kudo-title">Kudo Board Name</h2>
+      <h2 className="kudo-title">Kudo Card Name</h2>
       <div className="kudo-actions">
         <div className="reaction-buttons" onClick={(e) => e.stopPropagation()}>
           <button className="upvote">⬆️</button>

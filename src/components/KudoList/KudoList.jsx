@@ -3,15 +3,19 @@ import KudoCard from "../KudoCard/KudoCard";
 import "./KudoList.css";
 
 const KudoList = () => {
-  const kudoList = useState([]);
+  const [kudoList, setKudoList] = useState([null, null, null, null, null, null]);
+
+  // TODO: Create Fetch function to get all kudo card entries
 
   return (
-      <div className="board-list">
-        {kudoList.map((kudo, index) => (
-          // TODO: T192841040 Render each Board Ard
-          <></>
-        ))}
-      </div>
+    <div className="kudo-list">
+      {kudoList.map((kudo, index) => (
+        <div key={index}>
+          <KudoCard kudo={kudo} />
+        </div>
+      ))}
+      {/* TODO: Create Add Kudo Card Button */}
+    </div>
   );
 };
 
