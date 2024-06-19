@@ -1,6 +1,7 @@
 import { useState } from "react";
-import BoardCard from "../BoardCard/BoardCard";
 import "./BoardList.css";
+import BoardCard from "../BoardCard/BoardCard";
+import AddBoardCard from "../AddBoardCard/AddBoardCard";
 
 const BoardList = () => {
   const [boardList, setBoardList] = useState([]);
@@ -14,6 +15,7 @@ const BoardList = () => {
           <BoardCard board={board} />
         </div>
       ))}
+      <AddBoardCard />
     </div>
   );
 };
