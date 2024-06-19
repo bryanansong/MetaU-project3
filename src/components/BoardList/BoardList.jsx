@@ -5,19 +5,28 @@ import AddBoardCard from "../AddBoardCard/AddBoardCard";
 import AddBoardModal from "../AddBoardModal/AddBoardModal";
 
 const BoardList = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [boardList, setBoardList] = useState([]);
+
+  const closeModal = () => {
+    setIsVisible(false);
+  };
+  const openModal = () => {
+    setIsVisible(true);
+  };
 
   // TODO: Create Fetch function to get all board entries
 
   return (
     <div className="board-list">
-      <AddBoardModal />
+      {isVisible && <AddBoardModal closeModal={closeModal} />}
+
       {boardList.map((board, index) => (
         <div key={index}>
           <BoardCard board={board} />
         </div>
       ))}
-      <AddBoardCard />
+      <AddBoardCard toggleModal={setIsVisible} />
     </div>
   );
 };

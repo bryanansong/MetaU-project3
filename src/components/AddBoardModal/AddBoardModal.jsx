@@ -1,17 +1,12 @@
 import { useState } from "react";
 import "./AddBoardModal.css";
 
-const AddBoardModal = () => {
-  const [openModal, setOpenModal] = useState(false);
+const AddBoardModal = ({ closeModal }) => {
   const [category, setCatergory] = useState("");
   const [claimPost, setClaimPost] = useState(false);
 
   const handleRadioChange = () => {
     setClaimPost((prev) => !prev);
-  };
-
-  const closeModal = () => {
-    setOpenModal(false);
   };
 
   const createBoard = (formData) => {
@@ -30,13 +25,7 @@ const AddBoardModal = () => {
   };
 
   return (
-    <div
-      className="add-board-modal-container"
-      style={{ display: `${!openModal && "none"}` }}
-      onClick={() => {
-        closeModal();
-      }}
-    >
+    <div className="add-board-modal-container" onClick={closeModal}>
       <div
         className="add-board-modal-content"
         onClick={(event) => {
@@ -52,6 +41,7 @@ const AddBoardModal = () => {
             e.preventDefault();
             const formData = new FormData(e.target);
             createBoard(formData);
+            closeModal();
           }}
           className="create-board-form"
         >
