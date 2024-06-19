@@ -1,4 +1,4 @@
-.card {
+.kudo-card {
   border-radius: 8px;
   width: 260px;
   overflow: hidden;
@@ -7,29 +7,60 @@
   transition: all 0.3s linear;
 }
 
-.card:hover {
+.kudo-card:hover {
   transition: all 0.3s ease;
   background-color: #3667c9;
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: white;
-  transform: translate3D(0, -1px, 0) scale(1.04);
-}
-
-.card:hover {
   cursor: pointer;
+  transform: translate3D(0, -1px, 0) scale(1.04);
+
+  & .kudo-author {
+    color: #b9b8b8;
+  }
+
+  & .kudo-title {
+    color: white;
+  }
 }
 
-.movieCover {
+.kudo-img {
   width: 100%;
 }
 
-.movieText {
+.kudo-actions {
   padding: 0px 10px;
   margin: 3px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.movieTitle {
+.reaction-buttons{
+  gap: 10px;
+  display: flex;
+  border-radius: 0;
+}
+
+.upvote {
+  display: flex;
+}
+
+.downvote {
+  display: flex;
+}
+
+.kudo-title {
   font-weight: 200;
   letter-spacing: 2px;
-  margin: 3px 0px;
+  margin: 0px;
+  text-align: center;
+  color: black;
+}
+
+.kudo-author {
+  display: flex;
+  justify-content: end;
+  padding: 0;
+  color: grey;
 }

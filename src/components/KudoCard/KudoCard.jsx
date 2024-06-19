@@ -1,23 +1,24 @@
 import "./KudoCard.css";
 
-const KudoCard = () => {
+const KudoCard = ({ kudo }) => {
   return (
     <div
-      className="card"
-      // TODO: add onClick to open card creation mdal
+      className="kudo-card"
+      // TODO: add onClick event for opening board creation modal
       // onClick={() => openModal(movie)}
     >
       <img
-        src={
-          movie?.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : "https://placehold.co/260x390?text=No+Cover+Art&font=montserrat"
-        }
-        className="movieCover"
+        src={"https://placehold.co/260x390?text=No+Image&font=montserrat"}
+        className="kudo-img"
         alt="Movie Cover Art"
       />
-      <div className="movieText">
-        <h2 className="movieTitle">Card Name</h2>
+      <h2 className="kudo-title">Kudo Board Name</h2>
+      <div className="kudo-actions">
+        <div className="reaction-buttons" onClick={(e) => e.stopPropagation()}>
+          <button className="upvote">⬆️</button>
+          <button className="downvote">⬇️</button>
+        </div>
+        <p className="kudo-author">Bryan Ansong</p>
       </div>
     </div>
   );
