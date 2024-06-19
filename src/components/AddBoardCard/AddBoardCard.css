@@ -1,0 +1,26 @@
+.add-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 8px;
+  width: 260px;
+  color: black;
+  border: 2px dashed #c4d4f8;
+  transition: all 0.7s linear;
+}
+.add-board > h3 {
+  font-weight: 200;
+}
+
+.add-board:hover {
+  transition: all 0.4s ease;
+  background-color: #3667c9;
+  border: none;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: white;
+  cursor: pointer;
+  transform: translate3D(0, -1px, 0) scale(1.04);
+}
