@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./AddBoardModal.css";
 
 const AddBoardModal = () => {
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const [category, setCatergory] = useState("");
   const [claimPost, setClaimPost] = useState(false);
 
