@@ -13,9 +13,6 @@
   padding: 15px 20px;
   text-align: center;
   text-decoration: none;
-  /* margin-right: 13px;
-  margin-left: -1px;
-  margin-bottom: 10px; */
   border-radius: 100px;
 }
 
@@ -24,6 +21,5 @@
 }
 
 .active {
-  /* border: 5px solid #c4d4f8; */
   box-shadow:inset 0px 0px 0px 5px #c4d4f8;
 }
