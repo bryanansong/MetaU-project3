@@ -1,25 +1,44 @@
+import { useState } from "react";
 import "./SearchOptions.css";
 
 const SearchOptions = () => {
+  const [selectedOption, setSelectedOption] = useState("all");
+
   return (
-    <div className="filterOptions">
-      <input
-        type="text"
-        placeholder="Search"
-        // TODO: Fix onChange handler
-        // onChange={(event) => setSearchQuery(event.target.value)}
-      />
-      <select
-      // TODO: Fix onChange handler
-      // onChange={(e) => setSortType(e.target.value)}
+    <div className="search-options">
+      <button
+        className={`tag ${selectedOption === "all" && "active"}`}
+        onClick={() => {
+          setSelectedOption("all");
+          console.log("pressed");
+        }}
       >
-        <option value="none">Select Sorting</option>
-        <option value="title_asc">Title | Ascending</option>
-        <option value="title_desc">Title | Reverse</option>
-        <option value="popularity">Popularity</option>
-        <option value="date">Release Date</option>
-        <option value="vote_average">Average</option>
-      </select>
+        All 🌐
+      </button>
+      <button
+        className={`tag ${selectedOption === "recent" && "active"}`}
+        onClick={() => setSelectedOption("recent")}
+      >
+        Recent ⌛
+      </button>
+      <button
+        className={`tag ${selectedOption === "celebration" && "active"}`}
+        onClick={() => setSelectedOption("celebration")}
+      >
+        Celebration 🍾
+      </button>
+      <button
+        className={`tag ${selectedOption === "thanks" && "active"}`}
+        onClick={() => setSelectedOption("thanks")}
+      >
+        Thank You 🙏🏾
+      </button>
+      <button
+        className={`tag ${selectedOption === "inspiration" && "active"}`}
+        onClick={() => setSelectedOption("inspiration")}
+      >
+        Inspiration 🌈
+      </button>
     </div>
   );
 };

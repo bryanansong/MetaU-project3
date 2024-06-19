@@ -1,14 +1,29 @@
-.filterOptions {
+.search-options {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  margin-bottom: 30px;
+  margin: 20px 0px;
 }
 
-.filterOptions input,
-.filterOptions select {
-  padding: 10px;
-  width: 35vw;
-  border-radius: 8px;
-  border: 2px solid rgba(152, 151, 151, 0.461);
+.tag {
+  background-color: #eff4ff;
+  border: none;
+  color: #2557d6;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  /* margin-right: 13px;
+  margin-left: -1px;
+  margin-bottom: 10px; */
+  border-radius: 100px;
+}
+
+.tag:hover {
+  cursor: pointer;
+}
+
+.active {
+  /* border: 5px solid #c4d4f8; */
+  box-shadow:inset 0px 0px 0px 5px #c4d4f8;
 }
