@@ -3,12 +3,11 @@
   width: 260px;
   overflow: hidden;
   background-color: white;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
-  transition: all 0.2s linear;
+  transition: all 0.7s linear;
 }
 
 .board-card:hover {
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   background-color: #3667c9;
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   color: white;
