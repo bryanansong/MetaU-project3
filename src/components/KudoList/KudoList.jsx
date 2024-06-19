@@ -3,7 +3,7 @@ import KudoCard from "../KudoCard/KudoCard";
 import "./KudoList.css";
 
 const KudoList = () => {
-  const [kudoList, setKudoList] = useState([null, null, null, null, null, null]);
+  const [kudoList, setKudoList] = useState([]);
 
   // TODO: Create Fetch function to get all kudo card entries
 
