@@ -174,7 +174,9 @@ router.get('/:boardId/cards', async (req, res) => {
 
 // Get all boards in a category
 router.get('/categories/:categoryId', async (req, res) => {
-  const { categoryId } = req.params;
+  const { category } = req.params;
+
+  const categoryId = getCatergoryId(category);
 
   // Validate the category ID
   if (isNaN(parseInt(categoryId))) {
