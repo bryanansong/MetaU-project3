@@ -8,7 +8,6 @@ const SearchOptions = ({category, setCategory }) => {
         className={`tag ${category === "all" && "active"}`}
         onClick={() => {
           setCategory("all");
-          console.log("pressed");
         }}
       >
         All 🌐
