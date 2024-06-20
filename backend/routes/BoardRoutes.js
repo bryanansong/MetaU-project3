@@ -142,4 +142,63 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// TODO: Study this method
+// Get all cards on a board
+router.get('/:boardId/cards', async (req, res) => {
+  const { boardId } = req.params;
+
+  // Validate the board ID
+  if (isNaN(parseInt(boardId))) {
+    return res.status(400).json({ error: 'Invalid board ID' });
+  }
+
+  try {
+    // Check if the board exists
+    const board = await prisma.board.findUnique({
+      where: { id: parseInt(boardId) },
+    });
+
+    if (!board) {
+      return res.status(404).json({ error: 'Board not found' });
+    }
+
+    const cards = await prisma.card.findMany({
+      where: { boardId: parseInt(boardId) },
+    });
+
+    res.json(cards);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+// Get all boards in a category
+router.get('/categories/:categoryId', async (req, res) => {
+  const { categoryId } = req.params;
+
+  // Validate the category ID
+  if (isNaN(parseInt(categoryId))) {
+    return res.status(400).json({ error: 'Invalid category ID' });
+  }
+
+  try {
+    // Check if the category exists
+    const category = await prisma.category.findUnique({
+      where: { id: parseInt(categoryId) },
+    });
+
+    if (!category) {
+      return res.status(404).json({ error: 'Category not found' });
+    }
+
+    const boards = await prisma.board.findMany({
+      where: { categoryId: parseInt(categoryId) },
+    });
+
+    res.json(boards);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 export default router;
