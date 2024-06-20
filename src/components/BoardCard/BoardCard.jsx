@@ -6,7 +6,7 @@ const BoardCard = ({ board, refreshBoardsList }) => {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then(refreshBoardsList())
+      .then((response) => refreshBoardsList())
       .catch((err) => console.error(err));
   };
 
