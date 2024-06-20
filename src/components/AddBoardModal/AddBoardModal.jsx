@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./AddBoardModal.css";
 
-const AddBoardModal = ({ closeModal }) => {
+const AddBoardModal = ({ closeModal, refreshBoardsList }) => {
   const [category, setCatergory] = useState("");
   const [claimPost, setClaimPost] = useState(false);
 
@@ -26,10 +26,10 @@ const AddBoardModal = ({ closeModal }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newBoard),
-    }).catch((err) => console.error(err));
+    })
+      .then((response) => refreshBoardsList())
+      .catch((err) => console.error(err));
 
-    // Post data to database
-    console.log("Board Created!", newBoard);
     closeModal();
   };
 

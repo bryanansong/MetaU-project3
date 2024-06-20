@@ -45,7 +45,12 @@ const BoardList = ({ category, setCategory, searchQuery }) => {
 
   return (
     <div className="board-list">
-      {isVisible && <AddBoardModal closeModal={closeModal} />}
+      {isVisible && (
+        <AddBoardModal
+          refreshBoardsList={refreshBoardsList}
+          closeModal={closeModal}
+        />
+      )}
 
       {boardList.map((board, index) => (
         <div key={index}>
