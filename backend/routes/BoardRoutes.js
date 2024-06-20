@@ -109,6 +109,35 @@ router.get("/search/:searchQuery", async (req, res) => {
   }
 });
 
+// Get all cards on a board
+router.get("/:boardId/cards", async (req, res) => {
+  const { boardId } = req.params;
+
+  // Validate the board ID
+  if (isNaN(parseInt(boardId))) {
+    return res.status(400).json({ error: "Invalid board ID" });
+  }
+
+  try {
+    // Check if the board exists
+    const board = await prisma.board.findUnique({
+      where: { id: parseInt(boardId) },
+    });
+
+    if (!board) {
+      return res.status(404).json({ error: "Board not found" });
+    }
+
+    const cards = await prisma.card.findMany({
+      where: { boardId: parseInt(boardId) },
+    });
+
+    res.json(cards);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 // Get a single board by ID
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
@@ -181,35 +210,6 @@ router.delete("/:id", async (req, res) => {
     if (error.code === "P2025") {
       return res.status(404).json({ error: "Board not found" });
     }
-    handleError(res, error);
-  }
-});
-
-// Get all cards on a board
-router.get("/:boardId/cards", async (req, res) => {
-  const { boardId } = req.params;
-
-  // Validate the board ID
-  if (isNaN(parseInt(boardId))) {
-    return res.status(400).json({ error: "Invalid board ID" });
-  }
-
-  try {
-    // Check if the board exists
-    const board = await prisma.board.findUnique({
-      where: { id: parseInt(boardId) },
-    });
-
-    if (!board) {
-      return res.status(404).json({ error: "Board not found" });
-    }
-
-    const cards = await prisma.card.findMany({
-      where: { boardId: parseInt(boardId) },
-    });
-
-    res.json(cards);
-  } catch (error) {
     handleError(res, error);
   }
 });
