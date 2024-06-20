@@ -25,10 +25,9 @@ const BoardList = () => {
       .catch((err) => console.error(err));
   };
 
-  // FIXME: Add correct dependencies to useEffect
   useEffect(() => {
     fetchBoardList();
-  });
+  }, [boardList]);
 
   return (
     <div className="board-list">
