@@ -28,10 +28,9 @@ app.get("/", (req, res) => {
 // PRELOAD DATA
 const preLoadData = async () => {
   const categories = [
-    { id: 1, name: "recent" },
-    { id: 2, name: "celebration" },
-    { id: 3, name: "thank-you" },
-    { id: 4, name: "inspiration" },
+    { id: 1, name: "celebration" },
+    { id: 2, name: "thank-you" },
+    { id: 3, name: "inspiration" },
   ];
   for (const category of categories) {
     await prisma.category.upsert({
@@ -54,10 +53,9 @@ app.use("/comments", commentRoutes);
 // // // // // // // // // // HELPER FUNCTIONS // // // // // // // // // //
 export const getCatergoryId = (category) => {
   const textToId = {
-    recent: 1,
-    celebration: 2,
-    "thank-you": 3,
-    inspiration: 4,
+    celebration: 1,
+    "thank-you": 2,
+    inspiration: 3,
   };
 
   return textToId[category];
