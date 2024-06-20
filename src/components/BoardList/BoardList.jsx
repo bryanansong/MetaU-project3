@@ -26,6 +26,10 @@ const BoardList = ({ category, setCategory, searchQuery }) => {
     setIsVisible(true);
   };
 
+  const refreshBoardsList = () => {
+    fetchBoardList();
+  }
+
   const fetchBoardList = () => {
     fetch(`http://localhost:3000${boardListOptions[category]}`, {
       method: "GET",
@@ -45,7 +49,7 @@ const BoardList = ({ category, setCategory, searchQuery }) => {
 
       {boardList.map((board, index) => (
         <div key={index}>
-          <BoardCard board={board} />
+          <BoardCard refreshBoardsList={refreshBoardsList} board={board} />
         </div>
       ))}
       <AddBoardCard toggleModal={openModal} />
