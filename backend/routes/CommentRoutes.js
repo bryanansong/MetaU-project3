@@ -11,7 +11,7 @@ const handleError = (res, error) => {
 };
 
 // Create a new comment
-app.post('/comments', async (req, res) => {
+router.post('/comments', async (req, res) => {
   const { userId, cardId, description } = req.body;
 
   // Validate input
@@ -51,7 +51,7 @@ app.post('/comments', async (req, res) => {
 });
 
 // Get all comments
-app.get('/comments', async (req, res) => {
+router.get('/comments', async (req, res) => {
   try {
     const comments = await prisma.comment.findMany();
     res.json(comments);
@@ -61,7 +61,7 @@ app.get('/comments', async (req, res) => {
 });
 
 // Get a single comment by ID
-app.get('/comments/:id', async (req, res) => {
+router.get('/comments/:id', async (req, res) => {
   const { id } = req.params;
 
   // Validate the comment ID
@@ -85,7 +85,7 @@ app.get('/comments/:id', async (req, res) => {
 });
 
 // Update a comment by ID
-app.put('/comments/:id', async (req, res) => {
+router.put('/comments/:id', async (req, res) => {
   const { id } = req.params;
   const { description } = req.body;
 
@@ -115,7 +115,7 @@ app.put('/comments/:id', async (req, res) => {
 });
 
 // Delete a comment by ID
-app.delete('/comments/:id', async (req, res) => {
+router.delete('/comments/:id', async (req, res) => {
   const { id } = req.params;
 
   // Validate the comment ID
