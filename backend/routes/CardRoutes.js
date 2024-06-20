@@ -135,4 +135,35 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// Get all comments related to a card
+router.get('/:id/comments', async (req, res) => {
+  const { id } = req.params;
+
+  // Validate the card ID
+  if (isNaN(parseInt(id))) {
+    return res.status(400).json({ error: 'Invalid card ID' });
+  }
+
+  try {
+    // Check if the card exists
+    const card = await prisma.card.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!card) {
+      return res.status(404).json({ error: 'Card not found' });
+    }
+
+    // Retrieve all comments for the card
+    const comments = await prisma.comment.findMany({
+      where: { cardId: parseInt(id) },
+      orderBy: { createdAt: 'asc' }, // Optional: to order comments by creation time
+    });
+
+    res.json(comments);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 export default router;
