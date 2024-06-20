@@ -11,9 +11,8 @@ const handleError = (res, error) => {
   res.status(500).json({ error: "An internal server error occurred" });
 };
 
-
 // Create a new board
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   const { title, description, image, category, claimPost } = req.body;
 
   const categoryId = getCatergoryId(category);
@@ -21,7 +20,7 @@ router.post('/', async (req, res) => {
 
   // Validate input
   if (!title || !userId || !categoryId) {
-    return res.status(400).json({ error: 'Missing required fields' });
+    return res.status(400).json({ error: "Missing required fields" });
   }
 
   try {
@@ -30,7 +29,7 @@ router.post('/', async (req, res) => {
       where: { id: userId },
     });
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
 
     // Check if the category exists
@@ -38,7 +37,7 @@ router.post('/', async (req, res) => {
       where: { id: categoryId },
     });
     if (!category) {
-      return res.status(404).json({ error: 'Category not found' });
+      return res.status(404).json({ error: "Category not found" });
     }
 
     const board = await prisma.board.create({
@@ -58,7 +57,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get all boards
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const boards = await prisma.board.findMany();
     res.json(boards);
@@ -67,8 +66,22 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Get all recent boards
+router.get("/recent", async (req, res) => {
+  try {
+    const boards = await prisma.board.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    res.json(boards);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 // Get a single board by ID
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -77,7 +90,7 @@ router.get('/:id', async (req, res) => {
     });
 
     if (!board) {
-      return res.status(404).json({ error: 'Board not found' });
+      return res.status(404).json({ error: "Board not found" });
     }
 
     res.json(board);
@@ -87,7 +100,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a board by ID
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { title, description, image, category } = req.body;
 
@@ -95,7 +108,7 @@ router.put('/:id', async (req, res) => {
 
   // Validate input
   if (!title || !description || !categoryId) {
-    return res.status(400).json({ error: 'Missing required fields' });
+    return res.status(400).json({ error: "Missing required fields" });
   }
 
   try {
@@ -104,7 +117,7 @@ router.put('/:id', async (req, res) => {
       where: { id: categoryId },
     });
     if (!category) {
-      return res.status(404).json({ error: 'Category not found' });
+      return res.status(404).json({ error: "Category not found" });
     }
 
     const board = await prisma.board.update({
@@ -119,25 +132,25 @@ router.put('/:id', async (req, res) => {
 
     res.json(board);
   } catch (error) {
-    if (error.code === 'P2025') {
-      return res.status(404).json({ error: 'Board not found' });
+    if (error.code === "P2025") {
+      return res.status(404).json({ error: "Board not found" });
     }
     handleError(res, error);
   }
 });
 
 // Delete a board by ID
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
     await prisma.board.delete({
       where: { id: parseInt(id) },
     });
-    res.json({ message: 'Board deleted successfully' });
+    res.json({ message: "Board deleted successfully" });
   } catch (error) {
-    if (error.code === 'P2025') {
-      return res.status(404).json({ error: 'Board not found' });
+    if (error.code === "P2025") {
+      return res.status(404).json({ error: "Board not found" });
     }
     handleError(res, error);
   }
@@ -145,12 +158,12 @@ router.delete('/:id', async (req, res) => {
 
 // TODO: Study this method
 // Get all cards on a board
-router.get('/:boardId/cards', async (req, res) => {
+router.get("/:boardId/cards", async (req, res) => {
   const { boardId } = req.params;
 
   // Validate the board ID
   if (isNaN(parseInt(boardId))) {
-    return res.status(400).json({ error: 'Invalid board ID' });
+    return res.status(400).json({ error: "Invalid board ID" });
   }
 
   try {
@@ -160,7 +173,7 @@ router.get('/:boardId/cards', async (req, res) => {
     });
 
     if (!board) {
-      return res.status(404).json({ error: 'Board not found' });
+      return res.status(404).json({ error: "Board not found" });
     }
 
     const cards = await prisma.card.findMany({
@@ -174,14 +187,14 @@ router.get('/:boardId/cards', async (req, res) => {
 });
 
 // Get all boards in a category
-router.get('/categories/:categoryId', async (req, res) => {
+router.get("/categories/:category", async (req, res) => {
   const { category } = req.params;
 
   const categoryId = getCatergoryId(category);
 
   // Validate the category ID
   if (isNaN(parseInt(categoryId))) {
-    return res.status(400).json({ error: 'Invalid category ID' });
+    return res.status(400).json({ error: "Invalid category ID" });
   }
 
   try {
@@ -191,7 +204,7 @@ router.get('/categories/:categoryId', async (req, res) => {
     });
 
     if (!category) {
-      return res.status(404).json({ error: 'Category not found' });
+      return res.status(404).json({ error: "Category not found" });
     }
 
     const boards = await prisma.board.findMany({
@@ -203,7 +216,5 @@ router.get('/categories/:categoryId', async (req, res) => {
     handleError(res, error);
   }
 });
-
-// TODO: Add method to sort by date in descending order
 
 export default router;
