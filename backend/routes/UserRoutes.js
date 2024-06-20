@@ -55,4 +55,35 @@ router.delete('/:id', async (req, res) => {
   res.json({ message: 'User deleted' });
 });
 
+
+// TODO: Study this function
+// Get all boards created by a user
+router.get('/:userId/boards', async (req, res) => {
+  const { userId } = req.params;
+
+  // Validate the user ID
+  if (isNaN(parseInt(userId))) {
+    return res.status(400).json({ error: 'Invalid user ID' });
+  }
+
+  try {
+    // Check if the user exists
+    const user = await prisma.user.findUnique({
+      where: { id: parseInt(userId) },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const boards = await prisma.board.findMany({
+      where: { userId: parseInt(userId) },
+    });
+
+    res.json(boards);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 export default router;
