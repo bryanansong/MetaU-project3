@@ -17,9 +17,10 @@ router.post('/', async (req, res) => {
   const { title, description, image, category, claimPost } = req.body;
 
   const categoryId = getCatergoryId(category);
+  console.log("Category ID used: ", categoryId);
 
   // Validate input
-  if (!title || !description || !userId || !categoryId) {
+  if (!title || !userId || !categoryId) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -202,5 +203,7 @@ router.get('/categories/:categoryId', async (req, res) => {
     handleError(res, error);
   }
 });
+
+// TODO: Add method to sort by date in descending order
 
 export default router;
