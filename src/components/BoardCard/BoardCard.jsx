@@ -1,14 +1,30 @@
+import { useEffect, useState } from "react";
 import "./BoardCard.css";
 
 const BoardCard = ({ board, refreshBoardsList }) => {
+  const [boardCategory, setBoardCategory] = useState("");
+
   const deleteBoard = () => {
     fetch(`http://localhost:3000/boards/${board.id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((response) => refreshBoardsList())
+      .then(() => refreshBoardsList())
       .catch((err) => console.error(err));
   };
+
+  const getCatergoryFromId = (id) => {
+    fetch(`http://localhost:3000/categories/${id}`, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((response) => setBoardCategory(response.name))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getCatergoryFromId(board.categoryId);
+  }, []);
 
   return (
     <div
@@ -36,7 +52,8 @@ const BoardCard = ({ board, refreshBoardsList }) => {
       />
       <div className="board-description">
         <h2 className="board-title">{board.title}</h2>
-        <p className="board-author">{board.author || "Anonymous"}</p>
+        <p className="board-author">{boardCategory}</p>
+        <p className="board-author">By: {board.author || "Anonymous"}</p>
       </div>
     </div>
   );

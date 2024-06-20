@@ -3,7 +3,7 @@
   width: 260px;
   overflow: hidden;
   background-color: white;
-  transition: all 0.7s linear;
+  transition: all 0.5s linear;
 }
 
 .board-card:hover {
@@ -29,14 +29,14 @@
 
 .delete-board-button {
   background-color: white;
-  transition: all 0.7s linear;
+  transition: all 0.5s linear;
 }
 .board-img {
   width: 100%;
 }
 
 .board-description {
-  padding: 0px 10px;
+  padding: 0px 10px 10px 10px;
 }
 
 .board-title {
@@ -49,8 +49,8 @@
 
 .board-author {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   padding: 0;
-  margin-top: 0;
+  margin: 0px;
   color: grey;
 }
