@@ -21,8 +21,16 @@
   & .board-title {
     color: white;
   }
+
+  & .delete-board-button {
+    background-color: rgb(255, 53, 53);
+  }
 }
 
+.delete-board-button {
+  background-color: white;
+  transition: all 0.7s linear;
+}
 .board-img {
   width: 100%;
 }
