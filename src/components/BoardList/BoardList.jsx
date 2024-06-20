@@ -4,9 +4,19 @@ import BoardCard from "../BoardCard/BoardCard";
 import AddBoardCard from "../AddBoardCard/AddBoardCard";
 import AddBoardModal from "../AddBoardModal/AddBoardModal";
 
-const BoardList = () => {
+const BoardList = ({ category, searchQuery }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [boardList, setBoardList] = useState([]);
+  // const [category, setCategory] = useState("all");
+
+  const boardListOptions = {
+    search: `/search/${searchQuery}`,
+    all: "/boards",
+    recent: "/boards/recent",
+    celebration: "/boards/categories/celebration",
+    "thank-you": "/boards/categories/thank-you",
+    inspiration: "/boards/categories/inspiration",
+  };
 
   const closeModal = () => {
     setIsVisible(false);
@@ -17,7 +27,7 @@ const BoardList = () => {
   };
 
   const fetchBoardList = () => {
-    fetch("http://localhost:3000/boards", {
+    fetch(`http://localhost:3000${boardListOptions[category]}`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -27,7 +37,7 @@ const BoardList = () => {
 
   useEffect(() => {
     fetchBoardList();
-  }, [boardList]);
+  }, [category, searchQuery]);
 
   return (
     <div className="board-list">

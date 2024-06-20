@@ -1,41 +1,39 @@
-import { useState } from "react";
 import "./SearchOptions.css";
 
-const SearchOptions = () => {
-  const [selectedOption, setSelectedOption] = useState("all");
+const SearchOptions = ({category, setCategory }) => {
 
   return (
     <div className="search-options">
       <button
-        className={`tag ${selectedOption === "all" && "active"}`}
+        className={`tag ${category === "all" && "active"}`}
         onClick={() => {
-          setSelectedOption("all");
+          setCategory("all");
           console.log("pressed");
         }}
       >
         All 🌐
       </button>
       <button
-        className={`tag ${selectedOption === "recent" && "active"}`}
-        onClick={() => setSelectedOption("recent")}
+        className={`tag ${category === "recent" && "active"}`}
+        onClick={() => setCategory("recent")}
       >
         Recent ⌛
       </button>
       <button
-        className={`tag ${selectedOption === "celebration" && "active"}`}
-        onClick={() => setSelectedOption("celebration")}
+        className={`tag ${category === "celebration" && "active"}`}
+        onClick={() => setCategory("celebration")}
       >
         Celebration 🍾
       </button>
       <button
-        className={`tag ${selectedOption === "thanks" && "active"}`}
-        onClick={() => setSelectedOption("thanks")}
+        className={`tag ${category === "thank-you" && "active"}`}
+        onClick={() => setCategory("thank-you")}
       >
         Thank You 🙏🏾
       </button>
       <button
-        className={`tag ${selectedOption === "inspiration" && "active"}`}
-        onClick={() => setSelectedOption("inspiration")}
+        className={`tag ${category === "inspiration" && "active"}`}
+        onClick={() => setCategory("inspiration")}
       >
         Inspiration 🌈
       </button>
