@@ -10,18 +10,28 @@ const AddBoardModal = ({ closeModal }) => {
   };
 
   const createBoard = (formData) => {
-    // Obtain data from form
     const boardTitle = formData.get("title");
 
     const newBoard = {
       title: boardTitle,
       category,
-      author: claimPost ? "REPLACE_WITH_USERNAME" : "Anonymous",
+      claimPost,
       image: "",
+      description: "",
     };
+
+    // FIXME: Post result is a 400 error code
+    fetch("http://localhost:3000/boards", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newBoard),
+    }).catch((err) => console.error(err));
 
     // Post data to database
     console.log("Board Created!", newBoard);
+    closeModal();
   };
 
   return (
@@ -41,7 +51,6 @@ const AddBoardModal = ({ closeModal }) => {
             e.preventDefault();
             const formData = new FormData(e.target);
             createBoard(formData);
-            closeModal();
           }}
           className="create-board-form"
         >
