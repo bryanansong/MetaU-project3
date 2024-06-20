@@ -20,7 +20,6 @@ const AddBoardModal = ({ closeModal }) => {
       description: "",
     };
 
-    // FIXME: Post result is a 400 error code
     fetch("http://localhost:3000/boards", {
       method: "POST",
       headers: {
@@ -68,7 +67,6 @@ const AddBoardModal = ({ closeModal }) => {
               required
             >
               <option value="">Select a category</option>
-              <option value="recent">Recent</option>
               <option value="celebration">Celebration</option>
               <option value="thank-you">Thank You</option>
               <option value="inspiration">Inspiration</option>
