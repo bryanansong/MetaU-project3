@@ -4,10 +4,9 @@ import BoardCard from "../BoardCard/BoardCard";
 import AddBoardCard from "../AddBoardCard/AddBoardCard";
 import AddBoardModal from "../AddBoardModal/AddBoardModal";
 
-const BoardList = ({ category, searchQuery }) => {
+const BoardList = ({ category, setCategory, searchQuery }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [boardList, setBoardList] = useState([]);
-  // const [category, setCategory] = useState("all");
 
   const boardListOptions = {
     search: `/search/${searchQuery}`,
@@ -19,6 +18,7 @@ const BoardList = ({ category, searchQuery }) => {
   };
 
   const closeModal = () => {
+    setCategory("all");
     setIsVisible(false);
   };
 

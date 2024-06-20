@@ -7,16 +7,24 @@ import { useEffect, useState } from "react";
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("all");
-  
+
   useEffect(() => {
     setCategory(searchQuery ? "search" : "all");
   }, [searchQuery])
+
+  useEffect(() => {
+    setSearchQuery(prev => category === "search" ? prev : "");
+  }, [category])
 
   return (
     <div className="searchScreen-container">
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <SearchOptions category={category} setCategory={setCategory} />
-      <BoardList category={category} searchQuery={searchQuery} />
+      <BoardList
+        category={category}
+        setCategory={setCategory}
+        searchQuery={searchQuery}
+      />
     </div>
   );
 };
