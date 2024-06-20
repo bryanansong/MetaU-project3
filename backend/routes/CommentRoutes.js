@@ -3,6 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const router = Router();
+const userId = 1;
 
 // Helper function for error handling
 const handleError = (res, error) => {
@@ -12,7 +13,7 @@ const handleError = (res, error) => {
 
 // Create a new comment
 router.post('/comments', async (req, res) => {
-  const { userId, cardId, description } = req.body;
+  const { cardId, description } = req.body;
 
   // Validate input
   if (!userId || !cardId || !description) {
