@@ -1,21 +1,20 @@
 import "./BoardCard.css";
 
-const BoardCard = () => {
+const BoardCard = ({ board }) => {
   return (
     <div
       className="board-card"
-      // TODO: handle onClick event for opening board creation modal
-      // onClick={() => openModal(movie)}
+      // TODO: handle onClick event for opening board page
+      // onClick={() => openModal(board)}
     >
       <img
-        src={"https://placehold.co/260x390?text=No+Image&font=montserrat"}
+        src={board.image || "https://placehold.co/260x390?text=No+Image&font=montserrat"}
         className="board-img"
         alt="Kudo Board Cover"
       />
       <div className="board-description">
-
-      <h2 className="board-title">Kudo Board Name</h2>
-      <p className="board-author">Bryan Ansong</p>
+        <h2 className="board-title">{board.title}</h2>
+        <p className="board-author">{board.author || "Anonymous"}</p>
       </div>
     </div>
   );

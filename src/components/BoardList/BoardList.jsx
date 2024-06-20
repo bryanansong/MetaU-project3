@@ -16,7 +16,6 @@ const BoardList = () => {
     setIsVisible(true);
   };
 
-  // TODO: Create Fetch function to get all board entries
   const fetchBoardList = () => {
     fetch("http://localhost:3000/boards", {
       method: "GET",
@@ -26,6 +25,7 @@ const BoardList = () => {
       .catch((err) => console.error(err));
   };
 
+  // FIXME: Add correct dependencies to useEffect
   useEffect(() => {
     fetchBoardList();
   });
