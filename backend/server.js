@@ -1,10 +1,10 @@
 import express, { json } from "express";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
-import cardRoutes from "./routes/CardRoutes.js"
-// import homePageRoutes from "./routes/HomePageRoutes.js";
-// import kudoBoardRoutes from "./routes/KudoBoardPageRoutes";
-import loginRoutes from "./routes/LoginRoutes.js";
+import cardRoutes from "./routes/CardRoutes.js";
+import boardRoutes from "./routes/BoardRoutes.js";
+import userRoutes from "./routes/UserRoutes.js";
+import commentRoutes from "./routes/CommentRoutes.js"
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -18,62 +18,35 @@ app.listen(PORT, () => {
   console.log("SEVER STARTED 🚀");
 });
 
-
 app.get("/", (req, res) => {
     res.send("SERVER IS UP AND RUNNING");
 });
 
-// SETTING UP ROUTES
-app.use('/users', loginRoutes);
-// app.use('/home', homePageRoutes);
-app.use('/cards', cardRoutes);
-// // // // // // // // // // // // // // // //
-
-
-// // // // // // // // // // HOME PAGE ROUTES // // // // // // // // // //
-// Create a new board
-app.post('/boards', async (req, res) => {
-  const { title, description, userId, image, categoryId } = req.body;
-
-  // Validate input
-  if (!title || !description || !userId || !categoryId) {
-    return res.status(400).json({ error: 'Missing required fields' });
-  }
-
-  try {
-    // Check if the user exists
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
-    });
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    // Check if the category exists
-    const category = await prisma.category.findUnique({
-      where: { id: categoryId },
-    });
-    if (!category) {
-      return res.status(404).json({ error: 'Category not found' });
-    }
-
-    const board = await prisma.board.create({
-      data: {
-        title,
-        description,
-        userId,
-        image,
-        categoryId,
-        createdAt: new Date(),
+// PRELOAD DATA
+const preLoadData = async () => {
+  const categories = [
+    { id: 1, name: "recent" },
+    { id: 2, name: "celebration" },
+    { id: 3, name: "thank-you" },
+    { id: 4, name: "inspiration" },
+  ];
+  for (const category of categories) {
+    await prisma.category.upsert({
+      where: { id: category.id },
+      update: {},
+      create: {
+        id: category.id,
+        name: category.name,
       },
     });
-    res.status(201).json(board);
-  } catch (error) {
-    handleError(res, error);
   }
-});
+};
 
-
+// SETTING UP ROUTES
+app.use('/users', userRoutes);
+app.use('/boards', boardRoutes);
+app.use('/cards', cardRoutes);
+app.use('/comments', commentRoutes )
 
 
 // // // // // // // // // // HELPER FUNCTIONS // // // // // // // // // //
