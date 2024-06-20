@@ -4,7 +4,7 @@ const KudoCard = ({ kudo }) => {
   return (
     <div
       className="kudo-card"
-      // TODO: add onClick event for opening board creation modal
+      // TODO: add onClick event for navigate to Kudo Card Page
       // onClick={() => openModal(movie)}
     >
       <img

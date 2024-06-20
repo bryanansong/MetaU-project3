@@ -56,7 +56,6 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-// TODO: Study this function
 // Get all boards created by a user
 router.get('/:userId/boards', async (req, res) => {
   const { userId } = req.params;

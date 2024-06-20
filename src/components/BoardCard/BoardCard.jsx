@@ -29,7 +29,7 @@ const BoardCard = ({ board, refreshBoardsList }) => {
   return (
     <div
       className="board-card"
-      // TODO: handle onClick event for opening board page
+      // TODO: handle onClick event for navigating to board page
       // onClick={() => openModal(board)}
     >
       <div

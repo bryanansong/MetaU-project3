@@ -185,7 +185,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// TODO: Study this method
 // Get all cards on a board
 router.get("/:boardId/cards", async (req, res) => {
   const { boardId } = req.params;
