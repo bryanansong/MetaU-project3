@@ -15,7 +15,7 @@ app.use(json());
 
 // START SERVER
 app.listen(PORT, () => {
-  console.log("SEVER STARTED 🚀");
+  console.log(`SEVER STARTED ON PORT ${PORT} 🚀`);
 });
 
 app.get("/", (req, res) => {
