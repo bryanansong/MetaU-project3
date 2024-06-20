@@ -14,7 +14,7 @@ const handleError = (res, error) => {
 
 // Create a new board
 router.post('/', async (req, res) => {
-  const { title, description, image, category } = req.body;
+  const { title, description, image, category, claimPost } = req.body;
 
   const categoryId = getCatergoryId(category);
 
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
       data: {
         title,
         description,
-        userId,
+        userId: claimPost ? userId : 1,
         image,
         categoryId,
         createdAt: new Date(),
