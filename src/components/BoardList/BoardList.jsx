@@ -9,7 +9,7 @@ const BoardList = ({ category, setCategory, searchQuery }) => {
   const [boardList, setBoardList] = useState([]);
 
   const boardListOptions = {
-    search: `/search/${searchQuery}`,
+    search: `${searchQuery ? `/boards/search/${searchQuery}`: "/boards"}`,
     all: "/boards",
     recent: "/boards/recent",
     celebration: "/boards/categories/celebration",
