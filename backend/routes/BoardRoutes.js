@@ -80,6 +80,35 @@ router.get("/recent", async (req, res) => {
   }
 });
 
+// Get all boards that contain a substring of a search query in their title
+router.get("/search/:searchQuery", async (req, res) => {
+  const query = req.params.searchQuery;
+
+  // Validate input
+  if (!query || typeof query !== "string") {
+    return res.status(400).json({ error: "Invalid or missing search query" });
+  }
+
+  try {
+    const boards = await prisma.board.findMany({
+      where: {
+        title: {
+          contains: query,
+          mode: "insensitive",
+        },
+      },
+    });
+
+    if (boards) {
+      res.json(boards);
+    } else {
+      res.json([]);
+    }
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 // Get a single board by ID
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
