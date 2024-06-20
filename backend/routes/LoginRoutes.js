@@ -1,0 +1,58 @@
+import { Router } from "express";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+const router = Router();
+
+
+const handleError = (res, error) => {
+  console.error(error);
+  res.status(500).json({ error: "An internal server error occurred" });
+};
+
+// Create User
+router.post("/", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await prisma.user.create({
+    data: { username, password },
+  });
+  res.status(201).json(user);
+});
+
+
+// Get all users
+router.get('/', async (req, res) => {
+  const users = await prisma.user.findMany();
+  res.json(users);
+});
+
+// Get a single user by ID
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const user = await prisma.user.findUnique({
+    where: { id: parseInt(id) },
+  });
+  res.json(user);
+});
+
+// Update a user by ID
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { username, password } = req.body;
+  const user = await prisma.user.update({
+    where: { id: parseInt(id) },
+    data: { username, password },
+  });
+  res.json(user);
+});
+
+// Delete a user by ID
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  await prisma.user.delete({
+    where: { id: parseInt(id) },
+  });
+  res.json({ message: 'User deleted' });
+});
+
+export default router;
