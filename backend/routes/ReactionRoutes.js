@@ -10,7 +10,7 @@ const handleError = (res, error) => {
 };
 
 // Get all reactions for a specific card
-router.get("//:cardId/reactions", async (req, res) => {
+router.get("/:cardId", async (req, res) => {
   const { cardId } = req.params;
 
   // Validate the card ID
@@ -30,7 +30,7 @@ router.get("//:cardId/reactions", async (req, res) => {
 });
 
 // Add a reaction to a card
-router.post('/reactions', async (req, res) => {
+router.post('/', async (req, res) => {
   const { userId, cardId, reactionType } = req.body;
 
   // Validate input
@@ -63,7 +63,7 @@ router.post('/reactions', async (req, res) => {
 });
 
 // Remove a reaction from a card
-router.delete('/reactions/:reactionId', async (req, res) => {
+router.delete('/:reactionId', async (req, res) => {
   const { reactionId } = req.params;
 
   // Validate the reaction ID

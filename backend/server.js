@@ -7,6 +7,7 @@ import boardRoutes from "./routes/BoardRoutes.js";
 import userRoutes from "./routes/UserRoutes.js";
 import commentRoutes from "./routes/CommentRoutes.js";
 import categoryRoutes from "./routes/CategoryRoutes.js";
+import reactionRoutes from "./routes/ReactionRoutes.js"
 
 dotenv.config();
 const PORT = process.env.PORT || 3000;
@@ -51,6 +52,7 @@ app.use("/boards", boardRoutes);
 app.use("/cards", cardRoutes);
 app.use("/comments", commentRoutes);
 app.use("/categories", categoryRoutes);
+app.use("/reactions", reactionRoutes);
 
 // // // // // // // // // // HELPER FUNCTIONS // // // // // // // // // //
 export const getCatergoryId = (category) => {
