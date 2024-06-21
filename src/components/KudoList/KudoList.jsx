@@ -3,12 +3,11 @@ import KudoCard from "../KudoCard/KudoCard";
 import "./KudoList.css";
 import AddKudoCard from "../AddKudoCard/AddKudoCard";
 import AddKudoModal from '../AddKudoModal/AddKudoModal';
+import { Link } from "react-router-dom";
 
-const KudoList = () => {
+const KudoList = ({board}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [kudoList, setKudoList] = useState([]);
-  // TODO: Remove placeholder board and make it dynamic
-  const board = { id: 16 };
 
   const closeModal = () => {
     setIsVisible(false);
@@ -39,14 +38,15 @@ const KudoList = () => {
     <div className="kudo-list">
       {isVisible && (
         <AddKudoModal
+          boardId={board.id}
           refreshKudosList={refreshKudosList}
           closeModal={closeModal}
         />
       )}
       {kudoList.map((kudo, index) => (
-        <div key={index}>
+        <Link to={`/kudo/${kudo.id}`} key={index}>
           <KudoCard refreshKudosList={refreshKudosList} kudo={kudo} />
-        </div>
+        </Link>
       ))}
       <AddKudoCard toggleModal={openModal} />
     </div>
