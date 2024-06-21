@@ -9,6 +9,27 @@ const handleError = (res, error) => {
   res.status(500).json({ error: "An internal server error occurred" });
 };
 
+// Get number of likes
+router.get("/likes/:cardId", async (req, res) => {
+  const { cardId } = req.params;
+
+  // Validate the card ID
+  if (isNaN(parseInt(cardId))) {
+    return res.status(400).json({ error: "Invalid card ID" });
+  }
+
+  try {
+    const reactions = await prisma.reaction.count({
+      where: { cardId: parseInt(cardId),
+      reactionType: "upvote" },
+    });
+
+    res.json(reactions);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
 // Get all reactions for a specific card
 router.get("/:cardId", async (req, res) => {
   const { cardId } = req.params;
