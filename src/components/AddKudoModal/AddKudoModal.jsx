@@ -1,31 +1,34 @@
 import { useState } from "react";
 import "./AddKudoModal.css";
+import GifSearch from "../GifSearch/GifSearch";
 
 const AddKudoModal = ({ closeModal, refreshKudosList }) => {
-  const [category, setCatergory] = useState("");
   const [claimPost, setClaimPost] = useState(false);
+  const [selectedGifUrl, setSelectedGifUrl] = useState("");
+  // TODO: Replace with correct board number when you add routing
+  const boardId = 16
 
   const handleRadioChange = () => {
     setClaimPost((prev) => !prev);
   };
 
-  const createBoard = (formData) => {
-    const boardTitle = formData.get("title");
+  const createKudoCard = (formData) => {
+    const cardTitle = formData.get("title");
 
-    const newBoard = {
-      title: boardTitle,
-      category,
+    const newCard = {
+      title: cardTitle,
       claimPost,
-      image: "",
+      boardId: 16,
+      image: selectedGifUrl,
       description: "",
     };
 
-    fetch("http://localhost:3000/boards", {
+    fetch("http://localhost:3000/cards", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newBoard),
+      body: JSON.stringify(newCard),
     })
       .then((response) => refreshKudosList())
       .catch((err) => console.error(err));
@@ -49,20 +52,19 @@ const AddKudoModal = ({ closeModal, refreshKudosList }) => {
           onSubmit={(e) => {
             e.preventDefault();
             const formData = new FormData(e.target);
-            createBoard(formData);
+            createKudoCard(formData);
           }}
           className="create-kudo-form"
         >
           <div className="form-section">
             <label htmlFor="title">Title:</label>
-            <input type="text" id="title" name="title" required />
+            <input type="text" id="title" name="title" placeholder="Give Your Kudo A Name" required />
           </div>
 
           <div className="form-section">
-            <label htmlFor="category">Category:</label>
-            <input type="text" id="gif" name="gif" required />
+            <label htmlFor="category">Kudo GIF:</label>
+            <GifSearch selectedGifUrl={selectedGifUrl} setSelectedGifUrl={setSelectedGifUrl} />
           </div>
-          {/* TODO: Add GIF options to choose from here */}
 
           <div className="form-section">
             <label htmlFor="claimBoard">Claim Board?</label>
