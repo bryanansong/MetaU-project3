@@ -62,6 +62,28 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Remove last entry
+router.delete("/delete-last", async (req, res) => {
+  // Find the most recent entry
+  const latestEntry = await prisma.reaction.findFirst({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  if (latestEntry) {
+    // Delete the entry
+    await prisma.reaction.delete({
+      where: {
+        id: latestEntry.id,
+      },
+    });
+    res.status(201).json(latestEntry);
+  } else {
+    res.status(500).send({message: "Could not find entry"})
+  }
+});
+
 // Remove a reaction from a card
 router.delete('/:reactionId', async (req, res) => {
   const { reactionId } = req.params;
