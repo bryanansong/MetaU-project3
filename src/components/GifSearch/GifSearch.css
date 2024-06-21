@@ -1,0 +1,48 @@
+.gif-search-container {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.gif-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.gif-item {
+  cursor: pointer;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.gif-item.selected {
+  border-color: #ff3700;
+}
+
+.gif-item img {
+  width: 160px;
+  height: auto;
+}
+
+.selected-gif {
+  margin-top: 20px;
+}
+
+.selected-gif img {
+  max-width: 250px;
+  height: auto;
+
+  border-radius: 8px;
+}
