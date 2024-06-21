@@ -227,15 +227,57 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete a board by ID
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    await prisma.board.delete({
-      where: { id: parseInt(id) },
+    const boardId = parseInt(id);
+
+    // Validate the board ID
+    if (isNaN(boardId)) {
+      return res.status(400).json({ error: "Invalid board ID" });
+    }
+
+    // Check if the board exists
+    const board = await prisma.board.findUnique({
+      where: { id: boardId },
     });
-    res.json({ message: "Board deleted successfully" });
+
+    if (!board) {
+      return res.status(404).json({ error: "Board not found" });
+    }
+
+    // Delete comments associated with each card
+    const cards = await prisma.card.findMany({
+      where: { boardId },
+    });
+
+    //Delete reactions
+    for (const card of cards) {
+      await prisma.reaction.deleteMany({
+        where: { cardId: card.id },
+      });
+    }
+
+    for (const card of cards) {
+      await prisma.comment.deleteMany({
+        where: { cardId: card.id },
+      });
+    }
+
+    // Delete cards associated with the board
+    await prisma.card.deleteMany({
+      where: { boardId },
+    });
+
+    // Delete the board
+    await prisma.board.delete({
+      where: { id: boardId },
+    });
+
+    res.json({
+      message: "Board, associated cards, and comments deleted successfully",
+    });
   } catch (error) {
     if (error.code === "P2025") {
       return res.status(404).json({ error: "Board not found" });
