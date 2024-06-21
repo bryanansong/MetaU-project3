@@ -60,7 +60,6 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
       <div
         className="delete-card-button"
         onClick={(e) => {
-          console.log("CARD DELETED SUCCESSFULLY");
           e.stopPropagation();
           deleteCard();
         }}
@@ -68,7 +67,7 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
         DELETE KUDO CARD
       </div>
       <img
-        src={"https://placehold.co/260x390?text=No+Image&font=montserrat"}
+        src={kudo?.image ? kudo.image : "https://placehold.co/260x390?text=No+Image&font=montserrat"}
         className="kudo-img"
         alt="Movie Cover Art"
       />
