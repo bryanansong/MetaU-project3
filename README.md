@@ -1,8 +1,8 @@
-📝 `NOTE` Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Unit Assignment: Kudos Board
 
 Submitted by: **Bryan Ansong**
+
+https://www.loom.com/share/003fad02b4a042aaa63d3bfd27156494?sid=d31037d0-d3c9-4440-8422-f402b1f11e13
 
 Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
@@ -10,27 +10,27 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 #### CORE FEATURES
 
-- [ ] **Home Page**
+- [x] **Home Page**
 
-  - [ ] Displays header, banner, search, board grid, and footer.
-  - [ ] Displays preview of all boards on initial page load.
-    - [ ] Boards previews should show an image/gif and board title.
-  - [ ] Users can click on a category (recent, celebration, thank you, inspiration) to filter the boards.
-    - [ ] Recent displays most recently created boards.
-    - [ ] Other categories display boards of that type.
-  - [ ] Users can search for a board by name.
-  - [ ] Users can click on a board to navigate to a new page containing that board.
-  - [ ] Users can create a new board.
-    - [ ] Boards should have a title, category, and author (optional).
-  - [ ] User can delete boards.
+  - [x] Displays header, banner, search, board grid, and footer.
+  - [x] Displays preview of all boards on initial page load.
+    - [x] Boards previews should show an image/gif and board title.
+  - [x] Users can click on a category (recent, celebration, thank you, inspiration) to filter the boards.
+    - [x] Recent displays most recently created boards.
+    - [x] Other categories display boards of that type.
+  - [x] Users can search for a board by name.
+  - [x] Users can click on a board to navigate to a new page containing that board.
+  - [x] Users can create a new board.
+    - [x] Boards should have a title, category, and author (optional).
+  - [x] User can delete boards.
 
-- [ ] **Board Page**
-  - [ ] Displays a list of all cards for a board.
-    - [ ] Each card features a text message.
-    - [ ] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
-    - [ ] Users can optionally sign the card as the author.
-- [ ] Cards can be upvoted.
-- [ ] Cards can be deleted.
+- [x] **Board Page**
+  - [x] Displays a list of all cards for a board.
+    - [x] Each card features a text message.
+    - [x] Each card features a gif found using the [GIPHY API](https://developers.giphy.com/docs/api/).
+    - [x] Users can optionally sign the card as the author.
+- [x] Cards can be upvoted.
+- [x] Cards can be deleted.
 
 #### STRETCH FEATURES
 
@@ -43,14 +43,12 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
   - [ ] Allow boards to be deleted only if they are owned by the user.
 - [ ] **Deployment**
   - [ ] Website is deployed via Render.
-- [ ] **Comments**
-  - [ ] Users should be able to comment on cards.
+- [x] **Comments**
+  - [x] Users should be able to comment on cards.
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+https://www.loom.com/share/003fad02b4a042aaa63d3bfd27156494?sid=d31037d0-d3c9-4440-8422-f402b1f11e13
 
 ### Reflection
 

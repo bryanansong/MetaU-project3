@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useBlocker } from "react-router-dom";
 import "./KudoCard.css";
 import { useEffect, useState } from "react";
 
@@ -79,7 +79,11 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
           >
             <button
               className="upvote"
-              onClick={() => {
+              onClick={(e) => {
+                e.stopPropagation();
+                useBlocker(() => {
+                  true;
+                });
                 handleUpvote();
                 getAllReactions();
               }}
