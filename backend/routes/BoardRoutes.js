@@ -16,7 +16,6 @@ router.post("/", async (req, res) => {
   const { title, description, image, category, claimPost } = req.body;
 
   const categoryId = getCatergoryId(category);
-  console.log("Category ID used: ", categoryId);
 
   // Validate input
   if (!title || !userId || !categoryId) {
