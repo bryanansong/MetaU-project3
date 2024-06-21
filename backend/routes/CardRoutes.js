@@ -154,10 +154,40 @@ router.delete("/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    await prisma.card.delete({
-      where: { id: parseInt(id) },
+    const cardId = parseInt(id);
+
+    // Validate the card ID
+    if (isNaN(cardId)) {
+      return res.status(400).json({ error: "Invalid card ID" });
+    }
+
+    // Check if the card exists
+    const card = await prisma.card.findUnique({
+      where: { id: cardId },
     });
-    res.json({ message: "Card deleted successfully" });
+
+    if (!card) {
+      return res.status(404).json({ error: "Card not found" });
+    }
+
+    // Delete reactions associated with the card
+    await prisma.reaction.deleteMany({
+      where: { cardId },
+    });
+
+    // Delete comments associated with the card
+    await prisma.comment.deleteMany({
+      where: { cardId },
+    });
+
+    // Delete the card
+    await prisma.card.delete({
+      where: { id: cardId },
+    });
+
+    res.json({
+      message: "Card, associated reactions, and comments deleted successfully",
+    });
   } catch (error) {
     if (error.code === "P2025") {
       return res.status(404).json({ error: "Card not found" });
