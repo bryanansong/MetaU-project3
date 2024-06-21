@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import "./BoardCard.css";
-import { Link, useNavigation } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const BoardCard = ({ board, refreshBoardsList }) => {
   const [boardCategory, setBoardCategory] = useState("");
-  // const navigate = useNavigation();
 
   const deleteBoard = () => {
     fetch(`http://localhost:3000/boards/${board.id}`, {
@@ -39,8 +38,7 @@ const BoardCard = ({ board, refreshBoardsList }) => {
       >
         DELETE BOARD
       </div>
-      {/* <div onClick={() => {navigate(`/board/${board.id}`)}}> */}
-
+      <Link to={`/board/${board.id}`}>
         <img
           src={
             board.image ||
@@ -53,8 +51,8 @@ const BoardCard = ({ board, refreshBoardsList }) => {
           <h2 className="board-title">{board.title}</h2>
           <p className="board-author">{boardCategory}</p>
           <p className="board-author">By: {board.author || "Anonymous"}</p>
-        {/* </div> */}
-      </div>
+        </div>
+      </Link>
     </div>
   );
 };

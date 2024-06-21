@@ -55,9 +55,7 @@ const BoardList = ({ category, setCategory, searchQuery, navigate }) => {
 
       {boardList.map((board, index) => (
         <div key={index}>
-          <Link key={index} to={`/board/${board.id}`}>
             <BoardCard refreshBoardsList={refreshBoardsList} board={board} />
-          </Link>
         </div>
       ))}
       <AddBoardCard toggleModal={openModal} />
