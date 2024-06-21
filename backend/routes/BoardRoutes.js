@@ -16,7 +16,6 @@ router.post("/", async (req, res) => {
   const { title, description, image, category, claimPost } = req.body;
 
   const categoryId = getCatergoryId(category);
-  console.log("Category ID used: ", categoryId);
 
   // Validate input
   if (!title || !userId || !categoryId) {
@@ -60,6 +59,37 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const boards = await prisma.board.findMany();
+    res.json(boards);
+  } catch (error) {
+    handleError(res, error);
+  }
+});
+
+// Get all boards in a category
+router.get("/categories/:category", async (req, res) => {
+  const { category } = req.params;
+
+  const categoryId = getCatergoryId(category);
+
+  // Validate the category ID
+  if (isNaN(parseInt(categoryId))) {
+    return res.status(400).json({ error: "Invalid category ID" });
+  }
+
+  try {
+    // Check if the category exists
+    const category = await prisma.category.findUnique({
+      where: { id: parseInt(categoryId) },
+    });
+
+    if (!category) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+
+    const boards = await prisma.board.findMany({
+      where: { categoryId: parseInt(categoryId) },
+    });
+
     res.json(boards);
   } catch (error) {
     handleError(res, error);
@@ -210,37 +240,6 @@ router.delete("/:id", async (req, res) => {
     if (error.code === "P2025") {
       return res.status(404).json({ error: "Board not found" });
     }
-    handleError(res, error);
-  }
-});
-
-// Get all boards in a category
-router.get("/categories/:category", async (req, res) => {
-  const { category } = req.params;
-
-  const categoryId = getCatergoryId(category);
-
-  // Validate the category ID
-  if (isNaN(parseInt(categoryId))) {
-    return res.status(400).json({ error: "Invalid category ID" });
-  }
-
-  try {
-    // Check if the category exists
-    const category = await prisma.category.findUnique({
-      where: { id: parseInt(categoryId) },
-    });
-
-    if (!category) {
-      return res.status(404).json({ error: "Category not found" });
-    }
-
-    const boards = await prisma.board.findMany({
-      where: { categoryId: parseInt(categoryId) },
-    });
-
-    res.json(boards);
-  } catch (error) {
     handleError(res, error);
   }
 });

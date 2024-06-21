@@ -1,16 +1,25 @@
 .navbar {
   width: 100%;
-  background-color: #8296c3;
+  position: relative;
+  background-color: #6896bc;
   display: flex;
   justify-content: center;
   align-items: center;
   justify-content: space-around;
   color: black;
-  padding: 0px 30px;
+  padding: 0px 15px;
 }
 
 .navbar-title {
   display: flex;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 4rem;
+font-weight: 200;
+  margin: 5px;
+}
+
+.back-button {
+  position: absolute;
+  left: 80px;
+  top: 35%;
 }

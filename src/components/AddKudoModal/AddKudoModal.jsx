@@ -2,11 +2,9 @@ import { useState } from "react";
 import "./AddKudoModal.css";
 import GifSearch from "../GifSearch/GifSearch";
 
-const AddKudoModal = ({ closeModal, refreshKudosList }) => {
+const AddKudoModal = ({ closeModal, refreshKudosList, boardId }) => {
   const [claimPost, setClaimPost] = useState(false);
   const [selectedGifUrl, setSelectedGifUrl] = useState("");
-  // TODO: Replace with correct board number when you add routing
-  const boardId = 16
 
   const handleRadioChange = () => {
     setClaimPost((prev) => !prev);
@@ -18,7 +16,7 @@ const AddKudoModal = ({ closeModal, refreshKudosList }) => {
     const newCard = {
       title: cardTitle,
       claimPost,
-      boardId: 16,
+      boardId: boardId,
       image: selectedGifUrl,
       description: "",
     };
@@ -58,12 +56,21 @@ const AddKudoModal = ({ closeModal, refreshKudosList }) => {
         >
           <div className="form-section">
             <label htmlFor="title">Title:</label>
-            <input type="text" id="title" name="title" placeholder="Give Your Kudo A Name" required />
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Give Your Kudo A Name"
+              required
+            />
           </div>
 
           <div className="form-section">
             <label htmlFor="category">Kudo GIF:</label>
-            <GifSearch selectedGifUrl={selectedGifUrl} setSelectedGifUrl={setSelectedGifUrl} />
+            <GifSearch
+              selectedGifUrl={selectedGifUrl}
+              setSelectedGifUrl={setSelectedGifUrl}
+            />
           </div>
 
           <div className="form-section">

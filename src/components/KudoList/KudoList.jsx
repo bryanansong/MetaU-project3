@@ -4,11 +4,9 @@ import "./KudoList.css";
 import AddKudoCard from "../AddKudoCard/AddKudoCard";
 import AddKudoModal from '../AddKudoModal/AddKudoModal';
 
-const KudoList = () => {
+const KudoList = ({board}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [kudoList, setKudoList] = useState([]);
-  // TODO: Remove placeholder board and make it dynamic
-  const board = { id: 16 };
 
   const closeModal = () => {
     setIsVisible(false);
@@ -39,6 +37,7 @@ const KudoList = () => {
     <div className="kudo-list">
       {isVisible && (
         <AddKudoModal
+          boardId={board.id}
           refreshKudosList={refreshKudosList}
           closeModal={closeModal}
         />

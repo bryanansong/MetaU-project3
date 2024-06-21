@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./KudoPage.css";
+import { useParams } from "react-router-dom";
 
 const KudoPage = () => {
-  // TODO: REPLACE this
-  const kudo = { id: 5 };
+  const kudo = { id: useParams().kudoId };
 
   const [comment, setComment] = useState("");
   const [commentsList, setCommentsList] = useState([]);
@@ -15,14 +15,11 @@ const KudoPage = () => {
   };
 
   const handleDiscard = (e) => {
-    // e.stopPropagation();
     setComment("");
   };
 
   const handleCommentSubmit = (e) => {
-    // e.stopPropagation();
-    // e.preventDefault();
-    addCommet();
+    addComment();
   };
 
   const getCardInfo = () => {
@@ -43,20 +40,18 @@ const KudoPage = () => {
       .catch((err) => console.error(err));
   };
 
-  const addCommet = () => {
+  const addComment = () => {
     fetch(`http://localhost:3000/comments/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ cardId: kudo.id, description: comment }),
+      body: JSON.stringify({ cardId: parseInt(kudo.id), description: comment }),
     })
       .then((response) => response.json())
       .then((response) => setComment(""))
       .then((response) => getCardComments())
       .catch((err) => console.error(err));
-
-    ;
   };
 
   const fetchCardCreatorData = () => {

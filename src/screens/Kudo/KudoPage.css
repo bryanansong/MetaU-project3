@@ -123,3 +123,10 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 650px) {
+  .kudo-page-container {
+    flex-direction: column;
+    padding-top: 30px;
+  }
+}
