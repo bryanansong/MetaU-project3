@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./AddBoardModal.css";
+import GifSearch from '../GifSearch/GifSearch';
 
 const AddBoardModal = ({ closeModal, refreshBoardsList }) => {
   const [category, setCatergory] = useState("");
   const [claimPost, setClaimPost] = useState(false);
+  const [selectedGifUrl, setSelectedGifUrl] = useState("");
 
   const handleRadioChange = () => {
     setClaimPost((prev) => !prev);
@@ -16,7 +18,7 @@ const AddBoardModal = ({ closeModal, refreshBoardsList }) => {
       title: boardTitle,
       category,
       claimPost,
-      image: "",
+      image: selectedGifUrl,
       description: "",
     };
 
@@ -71,6 +73,14 @@ const AddBoardModal = ({ closeModal, refreshBoardsList }) => {
               <option value="thank-you">Thank You</option>
               <option value="inspiration">Inspiration</option>
             </select>
+          </div>
+
+          <div className="form-section">
+            <label htmlFor="category">Kudo GIF:</label>
+            <GifSearch
+              selectedGifUrl={selectedGifUrl}
+              setSelectedGifUrl={setSelectedGifUrl}
+            />
           </div>
 
           <div className="form-section">
