@@ -13,7 +13,7 @@ const handleError = (res, error) => {
 
 // Create a new card
 router.post("/", async (req, res) => {
-  const { title, boardId, image } = req.body;
+  const { title, claimPost, boardId, image } = req.body;
 
   // Validate input
   if (!title || !userId || !boardId) {
