@@ -18,7 +18,7 @@ const KudoList = () => {
   };
 
   const refreshKudosList = () => {
-    fetchBoardList();
+    fetchKudosList();
   };
 
   const fetchKudosList = () => {
@@ -38,7 +38,7 @@ const KudoList = () => {
     <div className="kudo-list">
       {kudoList.map((kudo, index) => (
         <div key={index}>
-          <KudoCard kudo={kudo} />
+          <KudoCard refreshKudosList={refreshKudosList} kudo={kudo} />
         </div>
       ))}
       <AddKudoCard toggleModal={openModal} />

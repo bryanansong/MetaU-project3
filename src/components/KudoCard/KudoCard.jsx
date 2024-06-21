@@ -1,7 +1,7 @@
 import "./KudoCard.css";
 import { useEffect, useState } from "react";
 
-const KudoCard = ({ kudo }) => {
+const KudoCard = ({ kudo, refreshKudosList }) => {
   const [creator, setCreator] = useState({});
   const [likes, setLikes] = useState(0);
 
@@ -36,6 +36,16 @@ const KudoCard = ({ kudo }) => {
       .catch((err) => console.error(err));
   };
 
+  // TODO: Make sure to delete all related comments and reactions
+  const deleteCard = () => {
+    fetch(`http://localhost:3000/cards/${kudo.id}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(() => refreshKudosList())
+      .catch((err) => console.error(err));
+  };
+
   useEffect(() => {
     fetchUserData();
     getAllReactions();
@@ -47,6 +57,16 @@ const KudoCard = ({ kudo }) => {
       // TODO: add onClick event for navigate to Kudo Card Page
       // onClick={() => openModal(movie)}
     >
+      <div
+        className="delete-card-button"
+        onClick={(e) => {
+          console.log("CARD DELETED SUCCESSFULLY");
+          e.stopPropagation();
+          deleteCard();
+        }}
+      >
+        DELETE KUDO CARD
+      </div>
       <img
         src={"https://placehold.co/260x390?text=No+Image&font=montserrat"}
         className="kudo-img"

@@ -22,6 +22,15 @@
   & .kudo-title {
     color: white;
   }
+
+  & .delete-card-button {
+    background-color: rgb(255, 53, 53);
+  }
+}
+
+.delete-card-button {
+  background-color: white;
+  transition: all 0.5s linear;
 }
 
 .kudo-img {
