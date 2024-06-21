@@ -3,7 +3,6 @@ import KudoCard from "../KudoCard/KudoCard";
 import "./KudoList.css";
 import AddKudoCard from "../AddKudoCard/AddKudoCard";
 import AddKudoModal from '../AddKudoModal/AddKudoModal';
-import { Link } from "react-router-dom";
 
 const KudoList = ({board}) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -44,9 +43,9 @@ const KudoList = ({board}) => {
         />
       )}
       {kudoList.map((kudo, index) => (
-        <Link to={`/kudo/${kudo.id}`} key={index}>
+        <div key={index}>
           <KudoCard refreshKudosList={refreshKudosList} kudo={kudo} />
-        </Link>
+        </div>
       ))}
       <AddKudoCard toggleModal={openModal} />
     </div>

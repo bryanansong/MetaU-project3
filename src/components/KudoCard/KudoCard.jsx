@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./KudoCard.css";
 import { useEffect, useState } from "react";
 
@@ -19,7 +20,6 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
       .catch((err) => console.error(err));
   };
 
-  // FIXME: Fix user id in here
   const handleUpvote = () => {
     fetch(`http://localhost:3000/reactions`, {
       method: "POST",
@@ -36,7 +36,6 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
       .catch((err) => console.error(err));
   };
 
-  // TODO: Make sure to delete all related comments and reactions
   const deleteCard = () => {
     fetch(`http://localhost:3000/cards/${kudo.id}`, {
       method: "DELETE",
@@ -52,11 +51,7 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
   }, []);
 
   return (
-    <div
-      className="kudo-card"
-      // TODO: add onClick event for navigate to Kudo Card Page
-      // onClick={() => openModal(movie)}
-    >
+    <div className="kudo-card">
       <div
         className="delete-card-button"
         onClick={(e) => {
@@ -66,26 +61,35 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
       >
         DELETE KUDO CARD
       </div>
-      <img
-        src={kudo?.image ? kudo.image : "https://placehold.co/260x290?text=No+Image&font=montserrat"}
-        className="kudo-img"
-        alt="Movie Cover Art"
-      />
-      <h2 className="kudo-title">{kudo.title}</h2>
-      <div className="kudo-actions">
-        <div className="reaction-buttons" onClick={(e) => e.stopPropagation()}>
-          <button
-            className="upvote"
-            onClick={() => {
-              handleUpvote();
-              getAllReactions();
-            }}
+      <Link to={`/kudo/${kudo.id}`}>
+        <img
+          src={
+            kudo?.image
+              ? kudo.image
+              : "https://placehold.co/260x290?text=No+Image&font=montserrat"
+          }
+          className="kudo-img"
+          alt="Movie Cover Art"
+        />
+        <h2 className="kudo-title">{kudo.title}</h2>
+        <div className="kudo-actions">
+          <div
+            className="reaction-buttons"
+            onClick={(e) => e.stopPropagation()}
           >
-            ⬆️ {likes}
-          </button>
+            <button
+              className="upvote"
+              onClick={() => {
+                handleUpvote();
+                getAllReactions();
+              }}
+            >
+              ⬆️ {likes}
+            </button>
+          </div>
+          <p className="kudo-author">{creator.username}</p>
         </div>
-        <p className="kudo-author">{creator.username}</p>
-      </div>
+      </Link>
     </div>
   );
 };

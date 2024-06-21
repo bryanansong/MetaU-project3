@@ -5,7 +5,6 @@ import GifSearch from "../GifSearch/GifSearch";
 const AddKudoModal = ({ closeModal, refreshKudosList, boardId }) => {
   const [claimPost, setClaimPost] = useState(false);
   const [selectedGifUrl, setSelectedGifUrl] = useState("");
-  // TODO: Replace with correct board number when you add routing
 
   const handleRadioChange = () => {
     setClaimPost((prev) => !prev);

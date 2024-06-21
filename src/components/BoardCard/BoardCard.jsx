@@ -29,13 +29,10 @@ const BoardCard = ({ board, refreshBoardsList }) => {
   return (
     <div
       className="board-card"
-      // TODO: handle onClick event for navigating to board page
-      // onClick={() => openModal(board)}
     >
       <div
         className="delete-board-button"
         onClick={(e) => {
-          console.log("BOARD DELETED SUCCESSFULLY");
           e.stopPropagation();
           deleteBoard();
         }}
