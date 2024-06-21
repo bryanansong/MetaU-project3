@@ -67,7 +67,7 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
         DELETE KUDO CARD
       </div>
       <img
-        src={kudo?.image ? kudo.image : "https://placehold.co/260x390?text=No+Image&font=montserrat"}
+        src={kudo?.image ? kudo.image : "https://placehold.co/260x290?text=No+Image&font=montserrat"}
         className="kudo-img"
         alt="Movie Cover Art"
       />

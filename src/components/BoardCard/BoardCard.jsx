@@ -45,7 +45,7 @@ const BoardCard = ({ board, refreshBoardsList }) => {
       <img
         src={
           board.image ||
-          "https://placehold.co/260x390?text=No+Image&font=montserrat"
+          "https://placehold.co/260x290?text=No+Image&font=montserrat"
         }
         className="board-img"
         alt="Kudo Board Cover"
