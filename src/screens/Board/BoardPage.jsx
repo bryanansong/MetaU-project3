@@ -16,10 +16,6 @@ const BoardPage = () => {
     setSearchQuery((prev) => (category === "search" ? prev : ""));
   }, [category]);
 
-  useEffect(() => {
-    console.log("My Boarddd: ", board);
-  });
-
   return (
     <div className="board-page-container">
       <KudoList

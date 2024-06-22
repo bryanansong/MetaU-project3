@@ -62,7 +62,6 @@ const KudoPage = () => {
   };
 
   useEffect(() => {
-    console.log(kudo);
     getCardInfo();
     getCardComments();
     fetchCardCreatorData();
