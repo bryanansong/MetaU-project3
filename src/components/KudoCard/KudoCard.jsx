@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const KudoCard = ({ kudo, refreshKudosList }) => {
   const [creator, setCreator] = useState({});
   const [likes, setLikes] = useState(0);
+  // let blocker = useBlocker(() => {true;});
 
   const fetchUserData = () => {
     fetch(`http://localhost:3000/users/${kudo.userId}`)
@@ -72,28 +73,22 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
           alt="Movie Cover Art"
         />
         <h2 className="kudo-title">{kudo.title}</h2>
-        <div className="kudo-actions">
-          <div
-            className="reaction-buttons"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="upvote"
-              onClick={(e) => {
-                e.stopPropagation();
-                useBlocker(() => {
-                  true;
-                });
-                handleUpvote();
-                getAllReactions();
-              }}
-            >
-              ⬆️ {likes}
-            </button>
-          </div>
-          <p className="kudo-author">{creator.username}</p>
-        </div>
       </Link>
+      <div className="kudo-actions">
+        <div className="reaction-buttons" onClick={(e) => e.stopPropagation()}>
+          <button
+            className="upvote"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleUpvote();
+              getAllReactions();
+            }}
+          >
+            ⬆️ {likes}
+          </button>
+        </div>
+        <p className="kudo-author">{creator.username}</p>
+      </div>
     </div>
   );
 };
