@@ -2,9 +2,9 @@
 
 Submitted by: **Bryan Ansong**
 
-https://www.loom.com/share/6e68fe6823fa46e5adf7f3932539766f?sid=2e246a6c-5aab-4e9c-a591-6ab49b3e178f
+[https://www.loom.com/share/6e68fe6823fa46e5adf7f3932539766f?sid=2e246a6c-5aab-4e9c-a591-6ab49b3e178f](https://www.loom.com/share/006f8cc3437f4b1ea7eb3025423ab923?sid=8d9219d4-20c1-4c02-9ce7-9922c1dd522f)
 
-Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Kudos Board Deployed Site](https://metau-project3-frontend.onrender.com)
 
 ### Application Features
 
@@ -34,35 +34,25 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 #### STRETCH FEATURES
 
-- [ ] **User Accounts**
-  - [ ] Users should be able to log in with a username and password.
-  - [ ] Users should be able to sign up for a new account.
-  - [ ] Boards and cards should be associated with a user.
-    - [ ] Anonymous cards or cards by guest users should still be allowed.
-  - [ ] Add a new filter option on the home page to display only the current user's boards.
-  - [ ] Allow boards to be deleted only if they are owned by the user.
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [x] **Deployment**
+  - [x] Website is deployed via Render.
 - [x] **Comments**
   - [x] Users should be able to comment on cards.
 
 ### Walkthrough Video
 
-https://www.loom.com/share/6e68fe6823fa46e5adf7f3932539766f?sid=2e246a6c-5aab-4e9c-a591-6ab49b3e178f
+[https://www.loom.com/share/6e68fe6823fa46e5adf7f3932539766f?sid=2e246a6c-5aab-4e9c-a591-6ab49b3e178f](https://www.loom.com/share/006f8cc3437f4b1ea7eb3025423ab923?sid=8d9219d4-20c1-4c02-9ce7-9922c1dd522f)
 
 ### Reflection
 
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
-
-Add your response here
+  -  I do not think the labs were enough practice to build the web app that was required of us. I wish we had a slower and more hands-on session to get better at learning backend technologies
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
-
-Add your response here
+  - If I had more time, I would have added the user management feature where each user can have their own accounts and commit actions under their username
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
-
-Add your response here
+  - My database schema was well planned and that really helped me speedrun a lot of my work because I didn't have to go back and redo my schema based on the new requirements I was seeing
 
 ### Open-source libraries used
 
