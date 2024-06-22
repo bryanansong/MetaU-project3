@@ -22,7 +22,7 @@ const AddBoardModal = ({ closeModal, refreshBoardsList }) => {
       description: "",
     };
 
-    fetch("http://localhost:3000/boards", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/boards`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

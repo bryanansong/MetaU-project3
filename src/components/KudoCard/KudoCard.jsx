@@ -8,21 +8,21 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
   // let blocker = useBlocker(() => {true;});
 
   const fetchUserData = () => {
-    fetch(`http://localhost:3000/users/${kudo.userId}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/users/${kudo.userId}`)
       .then((response) => response.json())
       .then((response) => setCreator(response))
       .catch((err) => console.error(err));
   };
 
   const getAllReactions = () => {
-    fetch(`http://localhost:3000/reactions/likes/${kudo.id}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/reactions/likes/${kudo.id}`)
       .then((response) => response.json())
       .then((response) => setLikes(response))
       .catch((err) => console.error(err));
   };
 
   const handleUpvote = () => {
-    fetch(`http://localhost:3000/reactions`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/reactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const KudoCard = ({ kudo, refreshKudosList }) => {
   };
 
   const deleteCard = () => {
-    fetch(`http://localhost:3000/cards/${kudo.id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/cards/${kudo.id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())

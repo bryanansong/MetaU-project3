@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import KudoCard from "../KudoCard/KudoCard";
 import "./KudoList.css";
 import AddKudoCard from "../AddKudoCard/AddKudoCard";
-import AddKudoModal from '../AddKudoModal/AddKudoModal';
+import AddKudoModal from "../AddKudoModal/AddKudoModal";
 
-const KudoList = ({board}) => {
+const KudoList = ({ board }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [kudoList, setKudoList] = useState([]);
 
@@ -21,7 +21,7 @@ const KudoList = ({board}) => {
   };
 
   const fetchKudosList = () => {
-    fetch(`http://localhost:3000/boards/${board.id}/cards`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/boards/${board.id}/cards`, {
       method: "GET",
     })
       .then((response) => response.json())

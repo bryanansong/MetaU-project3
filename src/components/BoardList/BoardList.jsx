@@ -32,7 +32,7 @@ const BoardList = ({ category, setCategory, searchQuery, navigate }) => {
   };
 
   const fetchBoardList = () => {
-    fetch(`http://localhost:3000${boardListOptions[category]}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}${boardListOptions[category]}`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -55,7 +55,7 @@ const BoardList = ({ category, setCategory, searchQuery, navigate }) => {
 
       {boardList.map((board, index) => (
         <div key={index}>
-            <BoardCard refreshBoardsList={refreshBoardsList} board={board} />
+          <BoardCard refreshBoardsList={refreshBoardsList} board={board} />
         </div>
       ))}
       <AddBoardCard toggleModal={openModal} />

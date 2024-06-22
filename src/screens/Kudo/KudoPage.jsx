@@ -23,7 +23,7 @@ const KudoPage = () => {
   };
 
   const getCardInfo = () => {
-    fetch(`http://localhost:3000/cards/${kudo.id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/cards/${kudo.id}`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -32,7 +32,7 @@ const KudoPage = () => {
   };
 
   const getCardComments = () => {
-    fetch(`http://localhost:3000/cards/${kudo.id}/comments`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/cards/${kudo.id}/comments`, {
       method: "GET",
     })
       .then((response) => response.json())
@@ -41,7 +41,7 @@ const KudoPage = () => {
   };
 
   const addComment = () => {
-    fetch(`http://localhost:3000/comments/`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/comments/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const KudoPage = () => {
   };
 
   const fetchCardCreatorData = () => {
-    fetch(`http://localhost:3000/users/${1}`)
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/users/${1}`)
       .then((response) => response.json())
       .then((response) => setCardCreator(response))
       .catch((err) => console.error(err));

@@ -21,7 +21,7 @@ const AddKudoModal = ({ closeModal, refreshKudosList, boardId }) => {
       description: "",
     };
 
-    fetch("http://localhost:3000/cards", {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/cards`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

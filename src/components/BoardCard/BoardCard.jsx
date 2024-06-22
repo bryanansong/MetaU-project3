@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import "./BoardCard.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BoardCard = ({ board, refreshBoardsList }) => {
   const [boardCategory, setBoardCategory] = useState("");
 
   const deleteBoard = () => {
-    fetch(`http://localhost:3000/boards/${board.id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/boards/${board.id}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -15,7 +15,7 @@ const BoardCard = ({ board, refreshBoardsList }) => {
   };
 
   const getCatergoryFromId = (id) => {
-    fetch(`http://localhost:3000/categories/${id}`, {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${id}`, {
       method: "GET",
     })
       .then((response) => response.json())
