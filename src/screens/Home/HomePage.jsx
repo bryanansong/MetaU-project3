@@ -10,11 +10,11 @@ const HomePage = () => {
 
   useEffect(() => {
     setCategory(searchQuery ? "search" : "all");
-  }, [searchQuery])
+  }, [searchQuery]);
 
   useEffect(() => {
-    setSearchQuery(prev => category === "search" ? prev : "");
-  }, [category])
+    setSearchQuery((prev) => (category === "search" ? prev : ""));
+  }, [category]);
 
   return (
     <div className="searchScreen-container">
