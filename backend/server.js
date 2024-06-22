@@ -44,7 +44,27 @@ const preLoadData = async () => {
       },
     });
   }
+
+  // Add a user with id 1, username 'Anonymous User' and hashed password
+  const user = {
+    id: 1,
+    username: "Anonymous User",
+    password: "test123",
+  };
+
+  await prisma.user.upsert({
+    where: { id: user.id },
+    update: {},
+    create: {
+      id: user.id,
+      username: user.username,
+      password: user.password,
+    },
+  });
 };
+
+// Trigger preLoaddata when server starts
+preLoadData();
 
 // SETTING UP ROUTES
 app.use("/users", userRoutes);
