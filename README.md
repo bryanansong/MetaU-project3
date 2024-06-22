@@ -2,7 +2,7 @@
 
 Submitted by: **Bryan Ansong**
 
-https://www.loom.com/share/003fad02b4a042aaa63d3bfd27156494?sid=d31037d0-d3c9-4440-8422-f402b1f11e13
+https://www.loom.com/share/6e68fe6823fa46e5adf7f3932539766f?sid=2e246a6c-5aab-4e9c-a591-6ab49b3e178f
 
 Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
@@ -48,7 +48,7 @@ Deployed Application (optional): [Kudos Board Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-https://www.loom.com/share/003fad02b4a042aaa63d3bfd27156494?sid=d31037d0-d3c9-4440-8422-f402b1f11e13
+https://www.loom.com/share/6e68fe6823fa46e5adf7f3932539766f?sid=2e246a6c-5aab-4e9c-a591-6ab49b3e178f
 
 ### Reflection
 
